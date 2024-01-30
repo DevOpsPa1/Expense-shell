@@ -1,16 +1,16 @@
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 if [ $? -eq 0 ]; then
-  echo -e "\e[36m Sucesses \e[0m"
-else
   echo -e "\e[32m Sucesses \e[0m"
+else
+  echo -e "\e[31m Sucesses \e[0m"
 fi
 
 dnf install nodejs -y
 if [ $? -eq 0 ]; then
-  echo -e "\e[36m Sucesses \e[0m"
-else
   echo -e "\e[32m Sucesses \e[0m"
+else
+  echo -e "\e[31m Sucesses \e[0m"
 fi
 cp backend.service /etc/systemd/system/backend.service
 if [ $? -eq 0 ]; then
