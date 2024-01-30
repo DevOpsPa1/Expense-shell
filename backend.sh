@@ -66,4 +66,4 @@ else
 fi
 dnf install mysql -y &>>log_file
 
-mysql -h 172.31.20.39 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>log_file
+mysql -h 172.31.92.116 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>log_file
