@@ -31,22 +31,22 @@ fi
 echo -e "\e[36m unzip frontend file \e[0m"
 cd /usr/share/nginx/html &>>log_file
 if [ $? -eq 0 ]; then
-  echo -e "\e[32m Sucesses \e[0m"
-else
   echo -e "\e[31m Sucesses \e[0m"
+else
+  echo -e "\e[32m Failure \e[0m"
 fi
 unzip /tmp/frontend.zip &>>log_file
 if [ $? -eq 0 ]; then
-  echo -e "\e[32m Sucesses \e[0m"
-else
   echo -e "\e[31m Sucesses \e[0m"
+else
+  echo -e "\e[32m Failure \e[0m"
 fi
 echo -e "\e[36m eanble and start nginx \e[0m"
 systemctl enable nginx &>>log_file
 systemctl start nginx &>>log_file
 if [ $? -eq 0 ]; then
-  echo -e "\e[32m Sucesses \e[0m"
-else
   echo -e "\e[31m Sucesses \e[0m"
+else
+  echo -e "\e[32m Failure \e[0m"
 fi
 #systemctl restart nginx.
