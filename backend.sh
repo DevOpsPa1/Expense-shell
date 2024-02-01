@@ -91,7 +91,7 @@ else
   echo -e "\e[31m failure \e[0m"
 fi
 echo -e "\e[36m Load Schema \e[0m"
-mysql -h 172.31.87.3 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>log_file
+mysql -h 172.31.87.3 -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>log_file
 if [ $? -eq 0 ]; then
   echo -e "\e[32m Sucesses \e[0m"
 else
