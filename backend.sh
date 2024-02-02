@@ -4,59 +4,59 @@ if [ -z "$1" ]; then
   exit
 fi
 MYSQL_ROOT_PASSWORD=$1
-echo -e "\e[36m Dsable NodeJS default Version \e[0m"
+echo -e "${colour} Dsable NodeJS default Version \e[0m"
 dnf module disable nodejs -y &>>log_file
 Status_check
 
-echo -e "\e[36m Enable NodeJS 18 VErsion \e[0m"
+echo -e "${colour}  Enable NodeJS 18 VErsion \e[0m"
 dnf module enable nodejs:18 -y &>>log_file
 Status_check
 
-echo -e "\e[36m Install NodeJS \e[0m"
+echo -e "${colour} Install NodeJS \e[0m"
 dnf install nodejs -y &>>log_file
 Status_check
 
-echo -e "\e[36m Copy backend Service File  \e[0m"
+echo -e "${colour}  Copy backend Service File  \e[0m"
 cp backend.service /etc/systemd/system/backend.service &>>log_file
 Status_check
 
 id expense &>>log_file
 if [ $? -ne 0 ]; then
- echo -e "\e[36m Add Application User \e[0m"
+ echo -e "${colour}  Add Application User \e[0m"
  useradd expense &>>log_file
  Status_check
 
 if [ ! -d /app ]; then
-  echo -e "\e[36m Creating Application Dir \e[0m"
+  echo -e "${colour}  Creating Application Dir \e[0m"
   mkdir /app &>>log_file
 Status_check
 
-echo -e "\e[36m DElete old Application Content \e[0m"
+echo -e "${colour}  DElete old Application Content \e[0m"
 rm -rm /app/* &>>log_file
 Status_check
 
-echo -e "\e[36m Download Application Content \e[0m"
+echo -e "${colour}  Download Application Content \e[0m"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>log_file
 Status_check
 
-echo -e "\e[36m Extract Application content \e[0m"
+echo -e "${colour}  Extract Application content \e[0m"
 cd /app &>>log_file
 unzip /tmp/backend.zip &>>log_file
 Status_check
 
-echo -e "\e[36m Download NodeJs Dependencies \e[0m"
+echo -e "${colour}  Download NodeJs Dependencies \e[0m"
 npm install &>>log_file
 Status_check
 
-echo -e "\e[36m Install MySQL Clint to Schema \e[0m"
+echo -e "${colour} Install MySQL Clint to Schema \e[0m"
 dnf install mysql -y &>>log_file
 Status_check
 
-echo -e "\e[36m Load Schema \e[0m"
+echo -e "${colour}  Load Schema \e[0m"
 mysql -h mysql-dev.pavanbalubadi3017.online -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>log_file
 Status_check
 
-echo -e "\e[36m Starting Backend Service \e[0m"
+echo -e "${colour}  Starting Backend Service \e[0m"
 systemctl daemon-reload &>>log_file
 systemctl enable backend &>>log_file
 systemctl start backend &>>log_file
