@@ -1,11 +1,4 @@
-log_file="/tmp/expense.log"
-Status_check() {
-  if [ $? -eq 0 ]; then
-    echo -e "\e[32m Sucesses \e[0m"
-  else
-    echo -e "\e[31m failure \e[0m"
-  fi
-}
+
 echo -e "\e[36m Installing nginx \e[0m"
 dnf install nginx -y &>>log_file
 Status_check
