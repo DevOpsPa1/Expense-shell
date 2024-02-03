@@ -26,13 +26,14 @@ if [ $? -ne 0 ]; then
  echo -e "${colour}  Add Application User \e[0m"
  useradd expense &>>log_file
  Status_check
+ fi
 
 if [ ! -d /app ]; then
   echo -e "${colour}  Creating Application Dir \e[0m"
   mkdir /app &>>log_file
 Status_check
 
-echo -e "${colour}  DElete old Application Content \e[0m"
+echo -e "${colour}  Delete old Application Content \e[0m"
 rm -rm /app/* &>>log_file
 Status_check
 
