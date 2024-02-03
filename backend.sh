@@ -35,7 +35,7 @@ Status_check
 fi
 
 echo -e "${colour}  Delete old Application Content \e[0m"
-rm -rm /app/* &>>log_file
+rm -rf /app/* &>>log_file
 Status_check
 
 echo -e "${colour}  Download Application Content \e[0m"
