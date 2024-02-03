@@ -24,6 +24,7 @@ Status_check
 echo -e "${colour}  Starting Nginx Service \e[0m"
 systemctl enable nginx &>>log_file
 systemctl start nginx &>>log_file
+systemctl restart nginx &>>log_file
 Status_check
 
-#systemctl restart nginx.
+
