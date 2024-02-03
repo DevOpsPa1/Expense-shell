@@ -62,3 +62,4 @@ systemctl daemon-reload &>>log_file
 systemctl enable backend &>>log_file
 systemctl start backend &>>log_file
 Status_check
+#
