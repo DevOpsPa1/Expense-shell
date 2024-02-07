@@ -5,11 +5,11 @@ if [ -z "$1" ]; then
   exit
 fi
 MYSQL_ROOT_PASSWORD=$1
-echo -e "${colour} Dsable NodeJS default Version \e[0m"
+echo -e "${colour} Disable NodeJS default Version \e[0m"
 dnf module disable nodejs -y &>>log_file
 Status_check
 
-echo -e "${colour}  Enable NodeJS 18 VErsion \e[0m"
+echo -e "${colour}  Enable NodeJS 18 Version \e[0m"
 dnf module enable nodejs:18 -y &>>log_file
 Status_check
 
